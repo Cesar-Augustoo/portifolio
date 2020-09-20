@@ -1,0 +1,5 @@
+fontawesome -- text
+favicon.io -- icones
+unsplash -- imagens publicas
+uigradients -- paletas de gradientes
+emoji cheat -- emoj para git
