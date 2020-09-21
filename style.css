@@ -13,6 +13,74 @@
     --font-action: "Mulish", serif;
 }
 
+.hamburguer {
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    z-index: 100;
+    /* Eixo Z faz com que o elemento fique a frente dos demais, atribui um valor alto para isso */
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.show-menu .hamburguer {
+    right: 16rem;
+}
+
+.line {
+    width: 100%;
+    background-color: #fff;
+    height: .1rem;
+    box-shadow: 0.1rem 0.1rem 1px #000;
+    transition: transform 1s ;
+}
+
+.show-menu #line1 {
+    transform: translate(.4rem, .4rem) rotate(45deg);
+}
+
+.show-menu #line2 {
+    opacity: 0;
+    visibility: hidden;
+    /* fazendo com que fique oculta enquanto o menu estiver aberto */
+}
+
+.show-menu #line3 {
+    transform: translate(.2rem, -.5rem) rotate(-45deg);
+}
+
+.hamburguer span {
+    position: absolute;
+    left: 3rem;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a044ff;
+    color: #ffffff;
+    font-family: var(--font-action);
+    opacity: 0;
+}
+
+.hamburguer span::before{
+    content:'';
+    position: absolute;
+    border-right: .5rem solid #a044ff ;
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid transparent ;
+    border-bottom: .5rem solid transparent ;
+    left: -1rem;
+}
+
+.show-menu .hamburguer:hover span{
+    opacity: 1;
+}
+
 header {
     width: 100%;
     height: 100vh;
@@ -35,7 +103,8 @@ header {
     object-fit: cover;
     /* Desse modo a imagem ocupa toda a Div e não é redimensionada quando altera-se o tamanho da pagina */
     opacity: 0.5;
-    animation: zoom 25s; /* Aqui eu aplico o keyframe criado */
+    animation: zoom 25s;
+    /* Aqui eu aplico o keyframe criado */
 }
 
 .banner {
@@ -53,7 +122,8 @@ header {
     text-shadow: .2rem .4rem 2px rgba(0, 0, 0, 0.4);
     line-height: 3.5rem;
     margin-bottom: 2rem;
-    opacity: 0; /* Não vai aparecer de inicio */
+    opacity: 0;
+    /* Não vai aparecer de inicio */
     animation: moveBanner 1s 0.5s forwards;
 }
 
@@ -89,21 +159,86 @@ header {
     opacity: 0.8;
 }
 
-@keyframes zoom{
-    0%{
+@keyframes zoom {
+    0% {
         transform: scale(1.3);
     }
-    100%{
+    100% {
         transform: scale(1);
     }
 }
 
-@keyframes moveBanner{
+@keyframes moveBanner {
     0% {
         transform: translateY(10rem) rotateY(-30deg);
     }
-    100%{
+    100% {
         transform: translateY(0) rotateY(0);
-        opacity: 1; /* Habilita o texto quando estiver carregada a pag */
+        opacity: 1;
+        /* Habilita o texto quando estiver carregada a pag */
     }
+}
+
+.sidebar {
+    width: 20rem;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: -20rem;
+    transition: all 1s;
+}
+
+.show-menu .sidebar {
+    right: 0;
+}
+
+.menu {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-item {
+    text-align: center;
+    margin-bottom: .4rem;
+}
+
+.menu-link {
+    font-family: var(--font-action);
+    font-size: 2rem;
+    color: #555;
+    transition: color 1s;
+    /* Sempre que mudar essa prop no caso color, irá demorar 1s */
+}
+
+.menu-link:hover {
+    color: #6a3093;
+}
+
+.social-media {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-media i {
+    background-color: #6a3093;
+    border-radius: 50%;
+    color: #FFF;
+    text-align: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1s;
+}
+
+.social-media i:hover {
+    background-color: #a044ff;
 }
